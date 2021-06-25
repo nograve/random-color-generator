@@ -19,6 +19,8 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _backgroundColor = _randomColorGenerator.nextColor();
+    // Text color rgb values will be different from backgroundColor
+    // so that text will always show on screen.
     _textColor = Color.fromRGBO(_backgroundColor.red - 128,
         _backgroundColor.green - 128, _backgroundColor.green - 128, 1.0);
   }
