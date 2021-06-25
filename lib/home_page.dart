@@ -36,7 +36,12 @@ class _HomePageState extends State<HomePage> {
         onTap: _onScreenTap,
         child: Container(
           child: Center(
-            child: Text('Hey there'),
+            child: Text(
+              'Hey there',
+              style: TextStyle(
+                fontSize: 30,
+              ),
+            ),
           ),
         ),
       ),
