@@ -25,8 +25,16 @@ class _HomePageState extends State<HomePage> {
     // so that text will always show on screen.
     _textColor = Color.fromRGBO(_backgroundColor.red - 128,
         _backgroundColor.green - 128, _backgroundColor.green - 128, 1.0);
-    _backgroundColorRGB = '#${_backgroundColor.red}.${_backgroundColor.green}.${_backgroundColor.blue}';
+    _backgroundColorRGB = _getRGBFromColor(_backgroundColor);
   }
+
+  // Gets RGB from Color with toRadixString and ensures it's at least
+  // 2 digits with padLeft.
+  String _getRGBFromColor(Color color) {
+    return '#${color.red.toRadixString(16).padLeft(2, '0')}'
+        '${color.green.toRadixString(16).padLeft(2, '0')}'
+        '${color.blue.toRadixString(16).padLeft(2, '0')}';
+}
 
   // If user taps the screen - changes color to random Color.
   void _onScreenTap() {
@@ -34,7 +42,7 @@ class _HomePageState extends State<HomePage> {
       _backgroundColor = _randomColorGenerator.nextColor();
       _textColor = Color.fromRGBO(_backgroundColor.red - 128,
           _backgroundColor.green - 128, _backgroundColor.green - 128, 1.0);
-      _backgroundColorRGB = '#${_backgroundColor.red}.${_backgroundColor.green}.${_backgroundColor.blue}';
+      _backgroundColorRGB = _getRGBFromColor(_backgroundColor);
     });
   }
 
