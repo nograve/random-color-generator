@@ -78,11 +78,13 @@ class _HomePageState extends State<HomePage> {
           ),
           // This aligns two string clicking by lower one you can
           // save RGB code to the clipboard.
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Container(
-              margin: EdgeInsets.all(20),
-              child:  Column(
+          GestureDetector(
+            onTap: _onScreenTap,
+            child:  Align(
+              alignment: Alignment.bottomRight,
+              child: Container(
+                margin: EdgeInsets.all(20),
+                child:  Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
@@ -107,6 +109,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+          )
         ],
       )
     );
