@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:random_color_generator/random_color_generator.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,8 +39,8 @@ class _HomePageState extends State<HomePage> {
           child: Center(
             child: Text(
               'Hey there',
-              style: TextStyle(
-                fontSize: 30,
+              style: GoogleFonts.kirangHaerang(
+                fontSize: 60,
               ),
             ),
           ),
