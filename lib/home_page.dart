@@ -13,17 +13,22 @@ class _HomePageState extends State<HomePage> {
   final RandomColorGenerator _randomColorGenerator = new RandomColorGenerator();
   // Random color will be assigned to _backgroundColor in overrode initState().
   late Color _backgroundColor;
+  late Color _textColor;
 
   @override
   void initState() {
     super.initState();
     _backgroundColor = _randomColorGenerator.nextColor();
+    _textColor = Color.fromRGBO(_backgroundColor.red - 128,
+        _backgroundColor.green - 128, _backgroundColor.green - 128, 1.0);
   }
 
   // If user taps the screen - changes color to random Color.
   void _onScreenTap() {
     setState(() {
       _backgroundColor = _randomColorGenerator.nextColor();
+      _textColor = Color.fromRGBO(_backgroundColor.red - 128,
+          _backgroundColor.green - 128, _backgroundColor.green - 128, 1.0);
     });
   }
 
@@ -41,6 +46,7 @@ class _HomePageState extends State<HomePage> {
               'Hey there',
               style: GoogleFonts.kirangHaerang(
                 fontSize: 56,
+                color: _textColor,
               ),
             ),
           ),
