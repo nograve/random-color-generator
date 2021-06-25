@@ -21,11 +21,13 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _backgroundColor = _randomColorGenerator.nextColor();
-    // Text color rgb values will be different from backgroundColor
-    // so that text will always show on screen.
-    _textColor = Color.fromRGBO(_backgroundColor.red - 128,
-        _backgroundColor.green - 128, _backgroundColor.green - 128, 1.0);
+    _textColor = _getDifferentColor(_backgroundColor);
     _backgroundColorRGB = _getRGBFromColor(_backgroundColor);
+  }
+
+  // The Color rgb values will be different from the given color.
+  Color _getDifferentColor(Color color) {
+    return Color.fromRGBO(color.red - 128, color.green - 128, color.blue - 128, 1.0);
   }
 
   // Gets RGB from Color with toRadixString and ensures it's at least
@@ -40,8 +42,7 @@ class _HomePageState extends State<HomePage> {
   void _onScreenTap() {
     setState(() {
       _backgroundColor = _randomColorGenerator.nextColor();
-      _textColor = Color.fromRGBO(_backgroundColor.red - 128,
-          _backgroundColor.green - 128, _backgroundColor.green - 128, 1.0);
+      _textColor = _getDifferentColor(_backgroundColor);
       _backgroundColorRGB = _getRGBFromColor(_backgroundColor);
     });
   }
