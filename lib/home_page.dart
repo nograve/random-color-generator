@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
             child: Text(
               'Hey there',
               style: GoogleFonts.kirangHaerang(
-                fontSize: 60,
+                fontSize: 56,
               ),
             ),
           ),
