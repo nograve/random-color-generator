@@ -8,7 +8,7 @@ class RandomColorGeneratorApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Random Color Generator Application',
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

@@ -46,6 +46,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  // Saves rgb code to the clipboard
   void _onRGBCodeLongPress() {
     Clipboard.setData(ClipboardData(text: _backgroundColorRGB));
   }
@@ -80,7 +81,7 @@ class _HomePageState extends State<HomePage> {
           // save RGB code to the clipboard.
           GestureDetector(
             onTap: _onScreenTap,
-            child:  Align(
+            child: Align(
               alignment: Alignment.bottomRight,
               child: Container(
                 margin: EdgeInsets.all(20),
@@ -94,6 +95,8 @@ class _HomePageState extends State<HomePage> {
                         color: _textColor.withOpacity(0.5),
                       ),
                     ),
+                    // This inner GestureDetector reacts on long press and
+                    // saves rgb code of the color to the clipboard.
                     GestureDetector(
                       onLongPress: _onRGBCodeLongPress,
                       child: Text(
