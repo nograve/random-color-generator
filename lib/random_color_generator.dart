@@ -11,7 +11,6 @@ class RandomColorGenerator {
 
   Color _currentColor;
 
-  String getColorRGB() {
-    return '#${_currentColor.red}.${_currentColor.green}.${_currentColor.blue}';
-}
+  Color get currentColor => _currentColor;
+  String get colorRGB => '#${_currentColor.red}.${_currentColor.green}.${_currentColor.blue}';
 }
