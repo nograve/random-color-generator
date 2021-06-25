@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:random_color_generator/random_color_generator.dart';
+import 'package:flutter/services.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,9 +12,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final RandomColorGenerator _randomColorGenerator = new RandomColorGenerator();
-  // Random color will be assigned to _backgroundColor in overrode initState().
+  // Random color and RGB will be assigned to _backgroundColor in overrode initState().
   late Color _backgroundColor;
   late Color _textColor;
+  late String _backgroundColorRGB;
 
   @override
   void initState() {
@@ -23,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     // so that text will always show on screen.
     _textColor = Color.fromRGBO(_backgroundColor.red - 128,
         _backgroundColor.green - 128, _backgroundColor.green - 128, 1.0);
+    _backgroundColorRGB = '#${_backgroundColor.red}.${_backgroundColor.green}.${_backgroundColor.blue}';
   }
 
   // If user taps the screen - changes color to random Color.
@@ -31,19 +34,21 @@ class _HomePageState extends State<HomePage> {
       _backgroundColor = _randomColorGenerator.nextColor();
       _textColor = Color.fromRGBO(_backgroundColor.red - 128,
           _backgroundColor.green - 128, _backgroundColor.green - 128, 1.0);
+      _backgroundColorRGB = '#${_backgroundColor.red}.${_backgroundColor.green}.${_backgroundColor.blue}';
     });
   }
 
   void _onRGBCodeLongPress() {
+    Clipboard.setData(ClipboardData(text: _backgroundColorRGB));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: _backgroundColor,
-      // We need to use stack for reacting to tap on whole screen as inner layer
+      // We need to use Stack for reacting to tap on whole screen as inner layer
         // and for saving code for clipboard functionality at the bottom right
-        // as the second outer layer.
+        // as the outer layer.
       body: Stack(
         children: [
           // GestureDetector to react to tap on whole screen
@@ -82,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                     GestureDetector(
                       onLongPress: _onRGBCodeLongPress,
                       child: Text(
-                        '#${_backgroundColor.red}.${_backgroundColor.green}.${_backgroundColor.blue}',
+                        _backgroundColorRGB,
                         style: GoogleFonts.kirangHaerang(
                           fontSize: 40,
                           fontStyle: FontStyle.italic,
