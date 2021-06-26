@@ -6,9 +6,9 @@ class RandomColorGeneratorApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Random Color Generator Application',
-      home: const HomePage(),
+      home: HomePage(),
     );
   }
 }

@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final RandomColorGenerator _randomColorGenerator = new RandomColorGenerator();
+  final RandomColorGenerator _randomColorGenerator = RandomColorGenerator();
   // Random color and RGB will be assigned to _backgroundColor in overrode initState().
   late Color _backgroundColor;
   late Color _textColor;
@@ -66,7 +66,6 @@ class _HomePageState extends State<HomePage> {
             // Define translucent behaviour to apply to all children in widget tree
             behavior: HitTestBehavior.translucent,
             onTap: _onScreenTap,
-            child: Container(
               child: Center(
                 child: Text(
                   'Hey there',
@@ -77,7 +76,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-          ),
           // This aligns two string clicking by lower one you can
           // save RGB code to the clipboard.
           GestureDetector(
@@ -85,7 +83,7 @@ class _HomePageState extends State<HomePage> {
             child: Align(
               alignment: Alignment.bottomRight,
               child: Container(
-                margin: EdgeInsets.all(20),
+                margin: const EdgeInsets.all(20),
                 child:  Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [

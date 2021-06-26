@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class RandomColorGenerator {
   RandomColorGenerator({int? seed}) :
-        _random = new Random(seed);
+        _random = Random(seed);
 
   final Random _random;
 
